@@ -11,15 +11,15 @@ const DailyCard = ({ nextHours }) => {
   const hour = nextHours.dt_txt.split(" ")[1];
 
   return (
-    <div>
+    <div className="daily-card">
+      <p className="day-hour">
+        {day}-{hour}
+      </p>
+      <p className="temp">{Math.ceil(Number(nextHours.main.temp))} C°</p>
       <img
         src={`http://openweathermap.org/img/wn/${nextHours.weather[0].icon}@2x.png`}
         alt={nextHours}
-      ></img>
-      <p>{Math.ceil(Number(nextHours.main.temp))} C°</p>
-      <p>
-        {day}-{hour}
-      </p>
+      />
     </div>
   );
 };

@@ -2,29 +2,90 @@
   text-align: center;
   width: 40vw;
   height: 75vh;
-  border: 1px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.header{
-  border: 1px solid;
+.header {
   height: 40%;
   width: 42vw;
   display: flex;
-  background-color: rgb(245, 200, 38);
+  background-color: #0d4c92;
+  border-radius: 15px;
 }
-.hourly{
+.hourly {
   width: 100%;
-  border: 1px solid;
   height: 60%;
-  background-color: rgb(35, 115, 186);
+  background-color: #59c1bd;
+  border-radius: 0 0 15px 15px;
 }
-.location{
-  border: 1px solid;
+.location {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.current-weather{
-  border: 1px solid;
+.current-weather {
   width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-form > input {
+  background: transparent;
+  border: none;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 10px;
+  width: 10vw;
+  height: 2rem;
+  text-indent: 1rem;
+  font-size: 1rem;
+}
+.search-form > input:focus-within {
+  outline: none;
+}
+.search-form > button {
+  margin-left: 1vw;
+  width: 5rem;
+  height: 2rem;
+  background: transparent;
+  box-shadow: 0px 0px 5px black;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.search-form > button:hover {
+  cursor: pointer;
+  background: #0d4b9238;
+}
+.search-form > input::placeholder {
+  color: rgba(0, 0, 0, 0.795);
+}
+
+.current-location {
+  margin-top: 1rem;
+}
+.current-location > button {
+  width: 10rem;
+  height: 2rem;
+  background: transparent;
+  box-shadow: 0px 0px 5px black;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.current-location > button:hover {
+  cursor: pointer;
+  background: #0d4b9238;
+}
+.daily-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bolder;
+}
+.daily-card > img {
+  width: 3rem;
 }

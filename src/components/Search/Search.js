@@ -31,8 +31,9 @@ const Search = () => {
   }, [dispatch])
 
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
+    <form onSubmit={(event) => handleSubmit(event)} className="search-form">
       <input
+        placeholder="City Name"
         type="search"
         value={city}
         onChange={(event) => handleChange(event)}

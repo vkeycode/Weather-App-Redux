@@ -30,7 +30,7 @@ const CurrentLocation = () => {
   };
 
   return (
-    <div>
+    <div className="current-location">
       <button onClick={handleLocation}>Get Your Location</button>
     </div>
   );
