@@ -1,21 +1,41 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// * GET DATA IN LOCATION
+// * GET WEATHER DATA
 export const fetchWeather = createAsyncThunk(
   "weathers/getWeathers",
   async (info) => {
-    const response = await axios(
-      `${process.env.REACT_APP_API_BASE_URL}weather?q=${info.city}&lang=${info.lang}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-    );
-    return response.data;
+    if (info.type === "search") {
+      const current = await axios(
+        `${process.env.REACT_APP_API_WEATHER_URL}weather?q=${info.city}&lang=en&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+      );
+      const nextHours = await axios(
+        `${process.env.REACT_APP_API_WEATHER_URL}forecast?q=${info.city}&lang=en&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+      );
+      return { current: current.data, nextHours: nextHours.data };
+    } else if (info.type === "coordinate") {
+      const current = await axios(
+        `${process.env.REACT_APP_API_WEATHER_URL}weather?lat=${info.lat}&lon=${info.lon}&lang=en&appid=${process.env.REACT_APP_API_KEY}&limit=10&units=metric`
+      );
+      const nextHours = await axios(
+        `${process.env.REACT_APP_API_WEATHER_URL}forecast?lat=${info.lat}&lon=${info.lon}&lang=en&appid=${process.env.REACT_APP_API_KEY}&limit=10&units=metric`
+      );
+      return { current: current.data, nextHours: nextHours.data };
+    }
   }
 );
 // * CREATE SLICE
 export const weatherSlice = createSlice({
   name: "weather",
   initialState: {
-    items: [],
+    items: [
+      {
+        nextHours: {
+          list: "",
+        },
+        current: {},
+      },
+    ],
     status: "idle",
   },
   reducers: {},
