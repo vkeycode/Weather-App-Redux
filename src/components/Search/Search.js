@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchWeather } from "../../slices/weatherSlice";
 
@@ -10,7 +10,7 @@ const Search = () => {
     setCity(event.target.value);
   };
 
-  const handleCity = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(
       fetchWeather({
@@ -20,8 +20,18 @@ const Search = () => {
     );
   };
 
+  // * INITIAL FETCH
+  useEffect(() => {
+    dispatch(
+      fetchWeather({
+        city: "New York",
+        type: "search",
+      })
+    );
+  }, [dispatch])
+
   return (
-    <form onSubmit={(event) => handleCity(event)}>
+    <form onSubmit={(event) => handleSubmit(event)}>
       <input
         type="search"
         value={city}

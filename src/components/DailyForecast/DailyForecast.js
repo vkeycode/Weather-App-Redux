@@ -8,7 +8,7 @@ const DailyForecast = () => {
     <div className="hourly">
       {
         nextHours &&
-        nextHours.list.slice(0, 8).map((weather, index) => {
+        nextHours.slice(0, 8).map((weather, index) => {
           return <DailyCard key={index} nextHours={weather} />;
         })
       }

@@ -12,7 +12,7 @@ export const fetchWeather = createAsyncThunk(
       const nextHours = await axios(
         `${process.env.REACT_APP_API_WEATHER_URL}forecast?q=${info.city}&lang=en&appid=${process.env.REACT_APP_API_KEY}&units=metric`
       );
-      return { current: current.data, nextHours: nextHours.data };
+      return { current: current.data, nextHours: nextHours.data.list };
     } else if (info.type === "coordinate") {
       const current = await axios(
         `${process.env.REACT_APP_API_WEATHER_URL}weather?lat=${info.lat}&lon=${info.lon}&lang=en&appid=${process.env.REACT_APP_API_KEY}&limit=10&units=metric`
@@ -20,7 +20,7 @@ export const fetchWeather = createAsyncThunk(
       const nextHours = await axios(
         `${process.env.REACT_APP_API_WEATHER_URL}forecast?lat=${info.lat}&lon=${info.lon}&lang=en&appid=${process.env.REACT_APP_API_KEY}&limit=10&units=metric`
       );
-      return { current: current.data, nextHours: nextHours.data };
+      return { current: current.data, nextHours: nextHours.data.list };
     }
   }
 );

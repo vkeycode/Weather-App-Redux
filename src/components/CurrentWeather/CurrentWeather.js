@@ -10,9 +10,9 @@ const CurrentWeather = () => {
         <div>
           <h4>
             {current.name}
-            <span>{current.sys.country}</span>
+            <span> {current.sys.country}</span>
           </h4>
-          <p>{Math.ceil(Number(current.main.temp))}</p>
+          <p>{Math.ceil(Number(current.main.temp))} C°</p>
           <p>{current.weather[0].main}</p>
           <img
             src={`http://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`}
