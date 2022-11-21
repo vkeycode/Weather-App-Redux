@@ -14,12 +14,16 @@ export const weatherSlice = createSlice({
       },
     ],
     status: "idle",
-    dayLight: "d",
+    dayLight: "",
+    search: "",
   },
   reducers: {
     isDayLight: (state, action) => {
       state.dayLight = action.payload;
     },
+    setCity: (state, action) => {
+      state.search = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchWeather.pending, (state) => {
@@ -35,5 +39,5 @@ export const weatherSlice = createSlice({
     });
   },
 });
-export const { isDayLight } = weatherSlice.actions;
+export const { isDayLight, setCity } = weatherSlice.actions;
 export default weatherSlice.reducer;
