@@ -1,12 +1,12 @@
 import React from "react";
-import CurrentLocation from "../CurrentLocation/CurrentLocation";
+import CurrentLocationButton from "../CurrentLocationButton/CurrentLocationButton";
 import Search from "../Search/Search";
 
 const Location = () => {
   return (
     <div className="location">
-      <Search></Search>
-      <CurrentLocation />
+      <Search />
+      <CurrentLocationButton />
     </div>
   );
 };

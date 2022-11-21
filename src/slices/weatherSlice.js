@@ -1,46 +1,28 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchWeather } from "../services/fetchWeather";
 
-// * GET WEATHER DATA
-export const fetchWeather = createAsyncThunk(
-  "weathers/getWeathers",
-  async (info) => {
-    if (info.type === "search") {
-      const current = await axios(
-        `${process.env.REACT_APP_API_WEATHER_URL}weather?q=${info.city}&lang=en&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-      );
-      const nextHours = await axios(
-        `${process.env.REACT_APP_API_WEATHER_URL}forecast?q=${info.city}&lang=en&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-      );
-      return { current: current.data, nextHours: nextHours.data.list };
-    } else if (info.type === "coordinate") {
-      const current = await axios(
-        `${process.env.REACT_APP_API_WEATHER_URL}weather?lat=${info.lat}&lon=${info.lon}&lang=en&appid=${process.env.REACT_APP_API_KEY}&limit=10&units=metric`
-      );
-      const nextHours = await axios(
-        `${process.env.REACT_APP_API_WEATHER_URL}forecast?lat=${info.lat}&lon=${info.lon}&lang=en&appid=${process.env.REACT_APP_API_KEY}&limit=10&units=metric`
-      );
-      return { current: current.data, nextHours: nextHours.data.list };
-    }
-  }
-);
 // * CREATE SLICE
 export const weatherSlice = createSlice({
   name: "weather",
   initialState: {
     items: [
       {
+        current: {},
         nextHours: {
           list: "",
         },
-        current: {},
       },
     ],
     status: "idle",
+    dayLight: "d",
   },
-  reducers: {},
+  reducers: {
+    isDayLight: (state, action) => {
+      state.dayLight = action.payload;
+    },
+  },
   extraReducers: (builder) => {
-    builder.addCase(fetchWeather.pending, (state, action) => {
+    builder.addCase(fetchWeather.pending, (state) => {
       state.status = "loading";
     });
     builder.addCase(fetchWeather.fulfilled, (state, action) => {
@@ -53,5 +35,5 @@ export const weatherSlice = createSlice({
     });
   },
 });
-
+export const { isDayLight } = weatherSlice.actions;
 export default weatherSlice.reducer;

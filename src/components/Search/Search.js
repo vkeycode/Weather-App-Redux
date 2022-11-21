@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchWeather } from "../../slices/weatherSlice";
+import { fetchWeather } from "../../services/fetchWeather";
 
 const Search = () => {
-  const [city, setCity] = useState();
+  const [city, setCity] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setCity(event.target.value);
   };
-
+  // * IF SUBMIT FORM FETCH NEW CITY WEATHER INFO
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(
@@ -18,6 +18,7 @@ const Search = () => {
         type: "search",
       })
     );
+    setCity("")
   };
 
   // * INITIAL FETCH
@@ -28,7 +29,7 @@ const Search = () => {
         type: "search",
       })
     );
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <form onSubmit={(event) => handleSubmit(event)} className="search-form">

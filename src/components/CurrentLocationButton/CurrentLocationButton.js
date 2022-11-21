@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchWeather } from "../../slices/weatherSlice";
+import { fetchWeather } from "../../services/fetchWeather";
 
+// * NAVIGATOR OPTIONS
 const options = {
   enableHighAccuracy: true,
   timeout: 1000,
@@ -10,7 +11,7 @@ const options = {
 
 const CurrentLocation = () => {
   const dispatch = useDispatch();
-
+ // * WHEN getCurrentPosition() FUNCTION SUCCEDED RUN succes() FUNCTIONT AND SET COORDINATE
   const success = (pos) => {
     dispatch(
       fetchWeather({
@@ -20,7 +21,7 @@ const CurrentLocation = () => {
       })
     );
   };
-
+ // * WHEN getCurrentPosition() FUNCTION FAILED RUN error() AND GIVE A WARNING IN THE CONSOLE
   const error = (err) => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   };
