@@ -4,7 +4,6 @@ import DailyCard from "../DailyCard/DailyCard";
 
 const DailyForecast = () => {
   const nextHours = useSelector((state) => state.weather.items.nextHours);
-  console.log(nextHours);
   return (
     <div className="hourly">
       {nextHours &&
