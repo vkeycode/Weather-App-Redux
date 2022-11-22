@@ -30,18 +30,18 @@
   height: 20rem;
   width: 56rem;
   display: flex;
-  background-color: #266dbe6c;
+  background-color: #266dbe3f;
   border-radius: 15px;
   box-shadow: inset 0px 0px 7px black;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2px);
 }
 .hourly {
   width: 54rem;
   height: 32rem;
-  background-color: #59c1be82;
+  background-color: #59c1be55;
   border-radius: 0 0 15px 15px;
   box-shadow: inset 0px 0px 8px black;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2px);
 }
 .location {
   width: 50%;
@@ -114,18 +114,24 @@
   margin-top: 1rem;
 }
 .current-location > button {
-  width: 12rem;
+  width: 14rem;
   height: 2.2rem;
   background: #9faab61b;
+  background-image: url("../public/location.png");
+  background-size: 1.2rem;
+  background-position: 1rem;
+  background-repeat: no-repeat;
+  text-indent: 25px;
   box-shadow: 0px 0px 5px black;
   border: none;
   border-radius: 10px;
   font-size: 1.2rem;
   font-weight: bold;
+  transition: 0.1s ease-in;
 }
 .current-location > button:hover {
   cursor: pointer;
-  background: #0d4b9238;
+  background-size: 1.3rem;
 }
 .daily-card {
   margin-top: 4px;
@@ -154,7 +160,78 @@
   width: 5rem;
 }
 
-@media screen and ((max-width: 950px)) {
+@media only screen and ((max-width: 950px)) {
+  .App {
+    width: 90vw;
+    height: 90vh;
+  }
+  .header {
+    min-height: 40%;
+    width: 95vw;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hourly {
+    width: 88vw;
+    height: 50vh;
+  }
+  .current-weather {
+    width: 100%;
+    height: 50%;
+  }
+  .location {
+    width: 100%;
+    height: 50%;
+  }
+  .daily-card {
+    height: 5.2vh;
+    font-size: 3.2vw;
+  }
+  .daily-card .temp-content > img {
+    width: 8vw;
+  }
+  .temp-content {
+    width: 18vw;
+  }
+  .content-current-weather {
+    display: flex;
+    align-items: center;
+  }
+  .content-current-weather > div > h4 {
+    font-size: 6vw;
+  }
+  .content-current-weather > img {
+    width: 20vw;
+  }
+  .day-span {
+    font-size: 3vw;
+    margin-left: 1.2vw;
+  }
+  .current-temp {
+    font-size: 5vw;
+  }
+  .current-main {
+    font-size: 3.5vw;
+  }
+  .current-location > button {
+    width: 50vw;
+    height: 5vh;
+    font-size: 4vw;
+    margin-bottom: 4vh;
+  }
+  .search-form > input {
+    width: 60vw;
+    height: 5vh;
+    font-size: 4vw;
+  }
+  .search-form > button {
+    margin-left: 1rem;
+    width: 20vw;
+    height: 5vh;
+    font-size: 4vw;
+  }
+}
+@media only screen and ((max-device-width: 950px)) {
   .App {
     width: 90vw;
     height: 90vh;
